@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Time counting</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        body,
+        .jumbotron {
+            padding: 30px;
+        }
+  </style>
+</head>
+<body>
+    
+    <div class="jumbotron text-center">
+        <div id="time">
+            <span id="min">00</span>:<span id="sec">00</span>
+        </div>
+        <button id="start" class="btn btn-primary" onclick="start()">start</button>
+        <button id="stop" class="btn btn-danger" onclick="stop()">stop</button>
+        <button id="reset" class="btn btn-default" onclick="reset()">reset</button>
+    </div>
+
+    <script>
+        var sec = 0;
+        var min = 0;
+        var timer;
+        function add(){
+            sec++;
+            second = parseInt(sec % 60);
+            min = parseInt(sec/60);
+            
+            if(second < 10){
+                second = "0" + second;
+            }
+
+            if(min < 10){
+                min = "0" + min;
+            }
+            document.getElementById('sec').innerHTML = second;
+            document.getElementById('min').innerHTML = min;
+        }
+
+        function start(){
+            timer = setInterval(add, 1000);
+        }
+
+        function stop(){
+            clearInterval(timer);
+        }
+
+        function reset(){
+            stop();
+            sec = 0;
+            min = 0;
+            document.getElementById('sec').innerHTML = "00";
+            document.getElementById('min').innerHTML = "00";
+        }
+    </script>
+</body>
+</html>
