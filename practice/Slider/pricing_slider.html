@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pricing with slider</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="slider.css">
+    <style>
+        body,
+        .jumbotron {
+            padding: 30px;
+        }
+        #quantity{
+            padding-top: 10px;
+        }
+        #total, #sign{
+            padding-top: 10px;
+            font-size: 30pt;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1>How much do 🌹Rose🌹 cost?</h1>
+        <div>
+            <label for="price">Price: </label>
+            <input type="text" value="20" id="price">
+        </div>
+        
+        <div>
+            <label id="quantity">Quantity: </label>
+        </div>
+
+        <div class="range range-danger">
+            <input type="range" name="range" min="1" max="100" value="50" onchange="updateSlider(this.value)">
+            <output id="rangeDanger">50</output>
+        </div>
+
+        <div>
+            <div id="total">$0.00</div>
+        </div>
+    </div>
+    
+    <script>
+        var price;
+        var total;
+
+        function updateSlider(quantity){
+            price = document.getElementById('price').value;
+            total = price * quantity;
+            document.getElementById('rangeDanger').value = quantity;
+            document.getElementById('total').innerText = "$" + total;
+            console.log("total: " + total);
+        } 
+    </script>
+</body>
+</html>
