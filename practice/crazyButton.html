@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Click Me!!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        button{
+            width: 20%;
+            position:absolute;
+            transition: linear 1s, width 2s, height 4s;
+        }
+        button:hover {
+             width: 200px;
+             height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="text-center">
+        <button class="btn btn-primary" onmouseover="move(this)">Click Me!</button>
+        <button class="btn btn-danger" onmouseover="move(this)">Click Me!</button>
+        <button class="btn btn-warning" onmouseover="move(this)">Click Me!</button>
+    </div>
+    
+
+    <script>
+        var inc = 500;
+        var x = 100; // initial positions
+        var y = 100;
+        function move(b){
+            var elem = b;
+            var newx = Math.floor(Math.random() * inc) + x; 
+            var newy = Math.floor(Math.random() * inc) + y;
+            elem.style.left = x + newx + "px"; 
+            elem.style.top = y + newy + "px";
+        }
+    </script>
+</body>
+</html>
