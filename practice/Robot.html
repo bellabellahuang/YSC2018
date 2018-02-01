@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Robot Game</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        body,
+        .jumbotron {
+            padding: 30px;
+        }
+
+        #robot{
+            padding-top: 200px;
+            padding-bottom: 200px;
+        }
+
+  </style>
+</head>
+<body>
+    <div class="jumbotron text-center">
+        <button id="up" class="btn btn-primary" onclick="up()">⏫</button>
+        <button id="down" class="btn btn-primary" onclick="down()">⏬</button>
+        <button id="left" class="btn btn-primary" onclick="left()">⏪</button>
+        <button id="right" class="btn btn-primary" onclick="right()">⏩</button>
+        <button id="random" class="btn btn-primary" onclick="random_walk()">‼</button>
+        <div id="robot">
+            <img src="C:\Users\user\Desktop\Bella\robot\Robot1.png" alt="Robot" width="200" height="200">
+        </div>
+        
+    </div>
+    
+    <script>
+        var step = 0;
+        var goUp = 200;
+
+        function left(){
+            step = step + 10;
+            if(step > 0){
+                document.getElementById('robot').style.paddingRight = step + "px";
+            }else{
+                document.getElementById('robot').style.paddingLeft = step*(-1) + "px";
+            }
+            console.log("left: " + step);
+        }
+
+        function right(){
+            step = step - 10;
+            if(step > 0){
+                document.getElementById('robot').style.paddingRight = step + "px";
+            }else{
+                document.getElementById('robot').style.paddingLeft = step*(-1) + "px";
+            }
+            console.log("right: " + step);
+        }
+
+        function up(){
+            goUp = goUp - 10;
+            if(goUp <= 0){
+                goUp = 200;
+            }
+            document.getElementById('robot').style.paddingTop = goUp + "px";
+
+            console.log("up: " + goUp);
+        }
+
+        function down(){
+            goUp = goUp + 10;
+            document.getElementById('robot').style.paddingTop = goUp + "px";
+
+            console.log("down: " + goUp);
+        }
+
+        function random_walk(){
+            var num = Math.random();
+            if(num >= 0 && num <0.25){
+                left();
+            }else if(num < 0.5){
+                right();
+            }else if(num <0.75){
+                up();
+            }else{
+                down();
+            }
+            console.log("random: " + num);
+        }
+    </script>
+</body>
+</html>
